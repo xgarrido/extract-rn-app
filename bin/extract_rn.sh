@@ -5,12 +5,15 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
+mkdir -p pdf
+
 names=$(qpdf --json "$1" | grep title | sed -e 's/^[ \t]*//' | sort | uniq | awk -F: '{print $2}' | sed 's/"//g')
 i=3
 IFS=$'\n'
 for name in ${names[@]}; do
     name=$(echo ${name:1} | tr ' ' '_')
-    echo "**"$i $name
-    pdfjam "$1" $i -o ${name}.pdf
+    pdfjam "$1" $i -o pdf/${name}.pdf
     i=$((i+1))
 done
+
+tar czvf pdf.tar.gz pdf
