@@ -12,7 +12,7 @@ i=3
 IFS=$'\n'
 for name in ${names[@]}; do
     name=$(echo ${name:1} | tr ' ' '_')
-    pdfjam "$1" $i -o pdf/${name}.pdf
+    qpdf "$1" --pages . $i -- pdf/${name}.pdf
     i=$((i+1))
 done
 
