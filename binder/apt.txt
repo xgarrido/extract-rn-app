@@ -1,2 +1,3 @@
 qpdf
 texlive-extra-utils
+cmake
