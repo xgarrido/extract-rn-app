@@ -1,2 +1,2 @@
 texlive-extra-utils
-pdftk
+pdftk-java
