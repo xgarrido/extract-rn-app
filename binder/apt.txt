@@ -1,3 +1,2 @@
-qpdf
 texlive-extra-utils
-cmake
+pdftk
