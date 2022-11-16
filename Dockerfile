@@ -4,7 +4,7 @@ MAINTAINER Xavier Garrido <xavier.garrido@lal.in2p3.fr>
 RUN apt-get update && apt-get install -y \
         qpdf                             \
         python3                          \
-        python3-pip                      \
+        python3-pip
 
 RUN python3 -m pip install --no-cache-dir notebook jupyterlab
 
