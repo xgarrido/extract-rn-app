@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
         python3                          \
         python3-pip
 
-RUN python3 -m pip install --no-cache-dir notebook jupyterlab voila
+RUN python3 -m pip install --no-cache-dir notebook jupyterlab voila ipywidgets
 
 # create user with a home directory
 ARG NB_USER
@@ -19,7 +19,9 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-WORKDIR ${HOME}
+
 USER ${USER}
 
 RUN git clone https://github.com/xgarrido/extract-rn-app.git
+
+WORKDIR ${HOME}/extract-rn-app
