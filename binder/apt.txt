@@ -1,0 +1,2 @@
+qpdf
+texlive-extra-utils
