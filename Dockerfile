@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
         python3                          \
         python3-pip
 
+RUN python3 -m pip install --no-cache-dir notebook jupyterlab voila
+
 # create user with a home directory
 ARG NB_USER
 ARG NB_UID
@@ -20,5 +22,4 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
-RUN python3 -m pip install --no-cache-dir notebook jupyterlab voila
-RUN git clone https://github.com/xgarrido/extract-rn-app.git .
+RUN git clone https://github.com/xgarrido/extract-rn-app.git
