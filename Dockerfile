@@ -20,6 +20,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
+WORKDIR ${HOME}
 USER ${USER}
 
 RUN git clone https://github.com/xgarrido/extract-rn-app.git
