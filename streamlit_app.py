@@ -67,7 +67,6 @@ if process:
         writer.add_page(readers[selected_rows.get("pdf")].pages[selected_rows.get("page") - 1])
         with open(os.path.join(output_dir, selected_rows.get("student") + ".pdf"), "wb") as fp:
             writer.write(fp)
-        print(selected_rows)
 
     tarball = "diploma.tar.gz"
     with tarfile.open(tarball, "w:gz") as tar:
