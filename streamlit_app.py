@@ -1,5 +1,6 @@
 import io
 import os
+import shutil
 import tarfile
 
 import pandas as pd
@@ -38,7 +39,9 @@ from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 gb = GridOptionsBuilder.from_dataframe(df)
 gb.configure_column("student", editable=True)
-gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+gb.configure_selection(
+    selection_mode="multiple", use_checkbox=True, pre_selected_rows=df.index.to_list()
+)
 gb.configure_side_bar()
 grid_options = gb.build()
 
@@ -57,6 +60,7 @@ container = st.empty()
 process = container.button("⚙ Process")
 if process:
     output_dir = "pdf"
+    shutil.rmtree(output_dir, ignore_errors=True)
     os.makedirs(output_dir, exist_ok=True)
     for selected_rows in response["selected_rows"]:
         writer = PdfWriter()
